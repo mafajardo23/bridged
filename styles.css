@@ -1,0 +1,53 @@
+/* Root = parent of everything  */
+:root {
+  --purple: #5E17EB;
+  --gray: #737373;
+  --yellow: #FFBD59;
+  --blue: #0849B6;
+  --red: #E6142D;
+  --white: #ffffff;
+  --off-white: #F7F5F2;
+  
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* Universal selector, add 0 padding to everything, overrides the browser's─ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--off-white);
+  color: #1a1a1a;
+  font-family: sans-serif;
+}
+
+#intro {
+  height: 100vh;  /* Viewport height, centers it always based on the full height of screen */
+  display: flex;   /* turn on flexbox (align items after parent element) */
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-wrap {
+  text-align: center;
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 6rem;
+  color: var(--purple);
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 1rem;
+}
+
