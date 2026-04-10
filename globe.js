@@ -23,7 +23,49 @@ const projection = d3.geoOrthographic()
   .rotate([0, -20, 0])
   .clipAngle(90);
 
-oer
 const path = d3.geoPath().projection(projection);
 
 console.log('ready');
+
+// ── OCEAN ──
+const ocean = svg.append('circle')
+  .attr('cx', width / 2)
+  .attr('cy', height / 2)
+  .attr('r', Math.min(width, height) * 0.38)
+  .attr('fill', '#1a1a4e');
+
+// ── GRID LINES (graticule) ──
+const graticule = d3.geoGraticule()();
+
+const gridLines = svg.append('path')
+  .datum(graticule)
+  .attr('d', path)
+  .attr('fill', 'none')
+  .attr('stroke', 'rgba(255,255,255,0.08)')
+  .attr('stroke-width', 0.5);
+
+// 
+const countriesGroup = svg.append('g');
+
+// goes virtually and gets the file and awaits for result
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(world) {
+    console.log('map data loaded');
+
+    // convert the  data into usable  features
+    //topojson is how is the format it comes in, converts it into GeoJSON so that D3 can read it and render
+    const countries = topojson.feature(world, world.objects.countries);
+
+    // draws each country as a path
+    countriesGroup.selectAll('path')
+      .data(countries.features)
+      .join('path')
+      .attr('d', path)
+      .attr('fill', 'rgba(255,255,255,0.15)')
+      .attr('stroke', 'rgba(255,255,255,0.3)')
+      .attr('stroke-width', 0.3);
+
+  });
