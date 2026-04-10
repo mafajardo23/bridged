@@ -4,6 +4,11 @@ gsap.registerPlugin(ScrollTrigger);
 // grab the svg element from the HTML
 //const svg = d3.select('#globe-svg');
 
+window.onload = function() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ... all your existing code goes inside here
+
 // set the width and height of the screen
 const width = window.innerWidth;
 const height = window.innerHeight;
@@ -69,3 +74,5 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
       .attr('stroke-width', 0.3);
 
   });
+
+  }
