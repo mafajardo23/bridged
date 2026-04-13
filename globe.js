@@ -75,4 +75,71 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
 
   });
 
+
+  //This section is for the scroll trigerred earth rotation
+  let autoRotate = true;
+
+  function spin(time) {
+    if (autoRotate) {
+      const currentRotation = projection.rotate();
+      projection.rotate([ //adds 0.3 to the longitude 
+        currentRotation[0] + 0.3,
+        currentRotation[1],
+        currentRotation[2]
+      ]);
+      
+      // redraw 
+      countriesGroup.selectAll('path').attr('d', path);
+      
+      requestAnimationFrame(spin);
+    }
+  }
+
+  requestAnimationFrame(spin);
+  //Stopped from autoRotate
+  ScrollTrigger.create({
+    trigger: '#globe-scene',
+    start: 'top top',
+    onEnter: function() {
+      autoRotate = false;
+    }
+  });
+
+  //Make it rotate towards Colombia
+  ScrollTrigger.create({
+  trigger: '#globe-scene',
+  start: 'top top',
+  end: 'bottom bottom',
+  scrub: 1,
+  onUpdate: function(self) {
+    const startLon = 0;
+    const endLon = 74;
+    const startLat = -20;
+    const endLat = -4;
+
+    // rotation happens in the first 60% of the scroll
+    const rotateProgress = Math.min(self.progress / 0.6, 1);
+
+    const currentLon = startLon + (endLon - startLon) * rotateProgress;
+    const currentLat = startLat + (endLat - startLat) * rotateProgress;
+
+    projection.rotate([currentLon, currentLat, 0]);
+      
+    // zoom only starts after 60% of the scroll
+    const zoomProgress = Math.max((self.progress - 0.6) / 0.4, 0);
+
+    const startScale = Math.min(width, height) * 0.38;
+    const endScale = Math.min(width, height) * 2.5;
+    const currentScale = startScale + (endScale - startScale) * zoomProgress;
+
+    projection.scale(currentScale);
+    ocean.attr('r', currentScale);
+    ocean.attr('cx', width / 2);
+    ocean.attr('cy', height / 2);
+    gridLines.attr('d', path);
+    countriesGroup.selectAll('path').attr('d', path); 
+  }
+  
+  });
+
   }
