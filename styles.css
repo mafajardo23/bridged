@@ -126,4 +126,36 @@ body {
   height: 100%;
 }
 
+/* ── Colombia first text ── */
+#globe-text {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  z-index: 10;
+}
 
+#country-name {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--white);
+  min-height: 3.5rem;
+}
+
+#vote-year {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  color: var(--white);
+  min-height: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ── FADE OVERLAY ── */
+#fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0d0a1a;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+}

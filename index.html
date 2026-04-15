@@ -14,10 +14,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
   <!-- GSAP — animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- GSAP — Text animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 
   <!-- ScrollTrigger — connects scroll to animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+  <script src="globe.js"></script>
 </head>
 
 <body>
@@ -40,10 +43,16 @@
   <div id="globe-scene">
     <div id="globe-sticky">
       <svg id="globe-svg"></svg>
+        <div id="globe-text">
+          <p id="country-name"></p>
+          <p id="vote-year"></p>
+        </div>
     </div>
   </div>
 
-  <!-- Link to globe. Html has to come before -->
-  <script src="globe.js"></script>
+  <!-- Fade into the story -->
+<div id="fade-overlay"></div>
+
+<div style="height: 200vh; background: #0d0a1a;"></div>
 
 </body>

@@ -1,13 +1,10 @@
 
-gsap.registerPlugin(ScrollTrigger);
-
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 // grab the svg element from the HTML
 //const svg = d3.select('#globe-svg');
 
 window.onload = function() {
   gsap.registerPlugin(ScrollTrigger);
-
-  // ... all your existing code goes inside here
 
 // set the width and height of the screen
 const width = window.innerWidth;
@@ -141,5 +138,56 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
   }
   
   });
+
+  // ── TYPEWRITER ──
+  ScrollTrigger.create({
+  trigger: '#globe-scene',
+  start: '75% top',
+  onEnter: function() {
+    gsap.to('#country-name', {
+      duration: 1.5,
+      text: 'Colombia.',
+      ease: 'none',
+      onComplete: function() {
+        gsap.to('#vote-year', {
+          duration: 1,
+          text: '2016',
+          ease: 'none'
+        });
+      }
+    });
+  },
+  onLeaveBack: function() {
+    gsap.to('#country-name', {
+      duration: 0.3,
+      text: '',
+      ease: 'none'
+    });
+    gsap.to('#vote-year', {
+      duration: 0.3,
+      text: '',
+      ease: 'none'
+    });
+  }
+});
+
+  // ── FADE TO DARK ──
+ScrollTrigger.create({
+  trigger: '#globe-scene',
+  start: '85% top',
+  end: '100% top',
+  scrub: 1,
+  onUpdate: function(self) {
+    gsap.set('#fade-overlay', {
+      opacity: self.progress
+    });
+  },
+  onLeaveBack: function() {
+    gsap.to('#fade-overlay', {
+      opacity: 0,
+      duration: 0.3
+    });
+  }
+});
 
   }
