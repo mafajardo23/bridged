@@ -72,36 +72,6 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
 
   });
 
-
-  //This section is for the scroll trigerred earth rotation
-  let autoRotate = true;
-
-  function spin(time) {
-    if (autoRotate) {
-      const currentRotation = projection.rotate();
-      projection.rotate([ //adds 0.3 to the longitude 
-        currentRotation[0] + 0.3,
-        currentRotation[1],
-        currentRotation[2]
-      ]);
-      
-      // redraw 
-      countriesGroup.selectAll('path').attr('d', path);
-      
-      requestAnimationFrame(spin);
-    }
-  }
-
-  requestAnimationFrame(spin);
-  //Stopped from autoRotate
-  ScrollTrigger.create({
-    trigger: '#globe-scene',
-    start: 'top top',
-    onEnter: function() {
-      autoRotate = false;
-    }
-  });
-
   //Make it rotate towards Colombia
   ScrollTrigger.create({
   trigger: '#globe-scene',
@@ -139,39 +109,29 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
   
   });
 
-  // ── TYPEWRITER ──
-  ScrollTrigger.create({
+// ── TYPEWRITER ──
+ScrollTrigger.create({
   trigger: '#globe-scene',
-  start: '75% top',
-  onEnter: function() {
-    gsap.to('#country-name', {
-      duration: 1.5,
-      text: 'Colombia.',
-      ease: 'none',
-      onComplete: function() {
-        gsap.to('#vote-year', {
-          duration: 1,
-          text: '2016',
-          ease: 'none'
-        });
+  start: '50% top',
+  end: '70% top',
+  scrub: 10, 
+  onUpdate: function(self) {
+    const spans = document.querySelectorAll('#globe-text span');
+    const total = spans.length;
+    const charsToShow = Math.floor(self.progress * total);
+
+    spans.forEach(function(span, index) {
+      if (index < charsToShow) {
+        span.style.opacity = 1;
+      } else {
+        span.style.opacity = 0;
       }
-    });
-  },
-  onLeaveBack: function() {
-    gsap.to('#country-name', {
-      duration: 0.3,
-      text: '',
-      ease: 'none'
-    });
-    gsap.to('#vote-year', {
-      duration: 0.3,
-      text: '',
-      ease: 'none'
     });
   }
 });
 
-  // ── FADE TO DARK ──
+
+  // ── Fade ──
 ScrollTrigger.create({
   trigger: '#globe-scene',
   start: '85% top',
@@ -190,4 +150,6 @@ ScrollTrigger.create({
   }
 });
 
-  }
+}
+
+const newspaper = document.getElementById('movingImage');

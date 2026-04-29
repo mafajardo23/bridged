@@ -1,6 +1,6 @@
 /* Root = parent of everything  */
 :root {
-  --purple: #5E17EB;
+  --purple: #4814b2;
   --gray: #737373;
   --yellow: #FFBD59;
   --blue: #0849B6;
@@ -8,7 +8,7 @@
   --white: #ffffff;
   --off-white: #F7F5F2;
   
-  --font-heading: 'Fraunces', serif;
+  --font-heading: 'Libre Baskerville', serif;
   --font-body: 'DM Sans', sans-serif;
 }
 

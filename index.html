@@ -4,7 +4,7 @@
   <title>BridgED</title>
 
    <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 
   <!-- Link to css stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -20,7 +20,6 @@
   <!-- ScrollTrigger — connects scroll to animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-  <script src="globe.js"></script>
 </head>
 
 <body>
@@ -28,14 +27,15 @@
   <!-- Intro -->
   <div id="intro">
     <div class="logo-wrap">
-      <h1 class="logo-text">BridgED</h1>
-      <p class="tagline">Narrating the Past · Shaping the Future</p>
+      <h1 class="logo-text">El precio del silencio</h1>
+      <p class="tagline">Antes de votar · Recuerda</p>
+      <br><br>
     </div>
   </div>
 
   <!-- Scroll hint -->
   <div class="scroll-hint">
-    <p class="scroll-text">scroll</p>
+    <p class="scroll-text">Desliza</p>
   <div class="scroll-line"></div>
   </div>
 
@@ -44,8 +44,22 @@
     <div id="globe-sticky">
       <svg id="globe-svg"></svg>
         <div id="globe-text">
-          <p id="country-name"></p>
-          <p id="vote-year"></p>
+          <p id="country-name">
+            <span>C</span>
+            <span>O</span>
+            <span>L</span>
+            <span>O</span>
+            <span>M</span>
+            <span>B</span>
+            <span>I</span>
+            <span>A</span>
+          </p>
+          <p id="vote-year">
+            <span>2</span>
+            <span>0</span>
+            <span>1</span>
+            <span>6</span>
+          </p>
         </div>
     </div>
   </div>
@@ -55,4 +69,9 @@
 
 <div style="height: 200vh; background: #0d0a1a;"></div>
 
+<div id="Newspaper">
+  <img id="movingImage" src="newspaper.png" alt="Newspaper Image">
+</div>
+
+  <script src="globe.js"></script>
 </body>
