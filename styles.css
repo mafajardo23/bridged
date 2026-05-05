@@ -127,17 +127,22 @@ body {
 }
 
 /* ── Colombia first text ── */
+
+
 #globe-text {
   position: absolute;
   bottom: 3rem;
   left: 3rem;
   z-index: 10;
+  color: var(--off-white);
 }
+
+
 
 #country-name {
   font-family: var(--font-heading);
   font-size: 3rem;
-  color: var(--white);
+  color: var(--off-white);
   min-height: 3.5rem;
 }
 
@@ -150,7 +155,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* ── FADE OVERLAY ── */
+/* ── Fade  ── */
 #fade-overlay {
   position: fixed;
   inset: 0;
@@ -158,4 +163,62 @@ body {
   opacity: 0;
   pointer-events: none;
   z-index: 50;
+}
+
+#newspaper-section {
+  height: 200vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #0d0a1a;
+  position: relative;
+  z-index: 60;
+  padding-top: 20vh;
+}
+
+#newspaper {
+  width: 60%;
+  max-width: 700px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  opacity: 0.8;
+  position: sticky;
+  top: 15vh;
+  z-index: 100;
+}
+
+#counter-section {
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #0d0a1a;
+  position: relative;
+  z-index: 60;
+}
+
+
+#counter-display {
+  background: #ffffff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 35vh;
+}
+
+#counter-number {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color:#0d0a1a;
+  letter-spacing: 0.15em;
+}
+
+#counter-label {
+  font-family: var(--font-body);
+  font-size: 1.5 rem;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.1em;
+  position: sticky;
 }

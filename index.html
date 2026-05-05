@@ -24,6 +24,8 @@
 
 <body>
 
+  <!-- everything else below -->
+
   <!-- Intro -->
   <div id="intro">
     <div class="logo-wrap">
@@ -39,7 +41,7 @@
   <div class="scroll-line"></div>
   </div>
 
-  <!-- GLOBE SECTION -->
+  <!-- Globe  -->
   <div id="globe-scene">
     <div id="globe-sticky">
       <svg id="globe-svg"></svg>
@@ -67,11 +69,23 @@
   <!-- Fade into the story -->
 <div id="fade-overlay"></div>
 
-<div style="height: 200vh; background: #0d0a1a;"></div>
+<div id="dark-pause" style="height: 100vh; background: #0d0a1a;"></div>
 
-<div id="Newspaper">
-  <img id="movingImage" src="newspaper.png" alt="Newspaper Image">
-</div>
+
+  <!-- Newspaper -->
+  <section id="newspaper-section">
+    <img id="newspaper" src="newspaper.png" alt="El Tiempo newspaper">
+  </section>
+
+<section id="counter-section">
+  <div id="counter-display">
+    <span id="counter-number">00000</span>
+  </div>
+  <p id="counter-label">votos separaron la paz de la guerra</p>
+</section>
+ 
+
+
 
   <script src="globe.js"></script>
 </body>
