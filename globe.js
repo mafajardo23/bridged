@@ -109,7 +109,7 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
   
   });
 
-// ── TYPEWRITER ──
+  //Typewriter text effect 
 ScrollTrigger.create({
   trigger: '#globe-scene',
   start: '50% top',
@@ -131,7 +131,7 @@ ScrollTrigger.create({
 });
 
 
-  // ── Fade ──
+  //Fade 
 ScrollTrigger.create({
   trigger: '#globe-scene',
   start: '85% top',
@@ -150,6 +150,8 @@ ScrollTrigger.create({
   }
 });
 
+//Vote counter for peace
+
 ScrollTrigger.create({
   trigger: '#counter-section',
   start: 'top center',
@@ -164,6 +166,37 @@ ScrollTrigger.create({
 });
 
 
+ScrollTrigger.create({
+  trigger: '#counter-section',
+  start: 'top center',
+  end: '80% center',
+  scrub: 2,
+  onUpdate: function(self) {
+    const countProgress = Math.min(self.progress / 0.3, 1);
+    const target = 53894;
+    const current = Math.floor(countProgress * target);
+    const padded = String(current).padStart(5, '0');
+    padded.split('').forEach(function(digit, i) {
+      document.getElementById('d' + i).textContent = digit;
+    });
+  }
+});
+
+//Yes and No bar graph function
+ScrollTrigger.create({
+  trigger: '#vote-breakdown',
+  start: 'top center',
+  end: '40% center',
+  scrub: 2,
+  onUpdate: function(self) {
+    const noHeight = self.progress * 280;
+    const siHeight = self.progress * 270;
+    document.getElementById('no-bar').style.height = noHeight + 'px';
+    document.getElementById('si-bar').style.height = siHeight + 'px';
+    document.getElementById('no-pct').style.opacity = self.progress;
+    document.getElementById('si-pct').style.opacity = self.progress;
+  }
+});
 
 }
 

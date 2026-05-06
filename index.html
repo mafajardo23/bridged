@@ -78,12 +78,40 @@
   </section>
 
 <section id="counter-section">
-  <div id="counter-display">
-    <span id="counter-number">00000</span>
+  <div id="counter-sticky">
+    <div id="counter-display">
+      <span class="digit" id="d0">0</span>
+      <span class="digit" id="d1">0</span>
+      <span class="digit" id="d2">0</span>
+      <span class="digit" id="d3">0</span>
+      <span class="digit" id="d4">0</span>
+    </div>
+    <p id="counter-label">votos separaron la paz de la guerra</p>
   </div>
-  <p id="counter-label">votos separaron la paz de la guerra</p>
 </section>
- 
+
+<section id="vote-breakdown">
+  <div id="vote-sticky">
+    <div id="vote-bars">
+      <div class="vote-block">
+        <div class="vote-pct" id="no-pct">50.21%</div>
+        <div class="vote-bar-wrap">
+          <div class="vote-bar" id="no-bar">
+            <span class="vote-label">No</span>
+          </div>
+        </div>
+      </div>
+      <div class="vote-block">
+        <div class="vote-pct" id="si-pct">49.79%</div>
+        <div class="vote-bar-wrap">
+          <div class="vote-bar" id="si-bar">
+            <span class="vote-label">Sí</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
   <script src="globe.js"></script>
