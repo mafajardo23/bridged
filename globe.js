@@ -199,6 +199,26 @@ ScrollTrigger.create({
   }
 });
 
+//Vote message
+ScrollTrigger.create({
+  trigger: '#vote-breakdown',
+  start: '30% top',
+  onEnter: function() {
+    document.getElementById('msg-line1').style.opacity = 1;
+    document.getElementById('msg-line1').style.transform = 'translateY(0)';
+    setTimeout(function() {
+      document.getElementById('msg-line2').style.opacity = 1;
+      document.getElementById('msg-line2').style.transform = 'translateY(0)';
+    }, 800);
+  },
+  onLeaveBack: function() {
+    document.getElementById('msg-line1').style.opacity = 0;
+    document.getElementById('msg-line1').style.transform = 'translateY(12px)';
+    document.getElementById('msg-line2').style.opacity = 0;
+    document.getElementById('msg-line2').style.transform = 'translateY(12px)';
+  }
+});
+
 }
 
 
