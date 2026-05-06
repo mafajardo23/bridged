@@ -5,6 +5,7 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 window.onload = function() {
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.normalizeScroll(true); //Added this line so that Github Pages scroll works 
 
 // set the width and height of the screen
 const width = window.innerWidth;
