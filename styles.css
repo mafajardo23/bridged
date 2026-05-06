@@ -166,7 +166,7 @@ body {
 }
 
 #newspaper-section {
-  height: 200vh;
+  height: 150vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -187,7 +187,7 @@ body {
 }
 
 #counter-section {
-  height: 150vh;
+  height: 250vh;
   background: #0d0a1a;
   position: relative;
   z-index: 60;
@@ -347,4 +347,6 @@ body {
 #msg-line2 {
   transition-delay: 0.6s;
 }
+
+
 

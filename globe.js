@@ -153,19 +153,6 @@ ScrollTrigger.create({
 
 //Vote counter for peace
 
-ScrollTrigger.create({
-  trigger: '#counter-section',
-  start: 'top center',
-  end: 'center center',
-  scrub: 1,
-  onUpdate: function(self) {
-    const target = 53894;
-    const current = Math.floor(self.progress * target);
-    const padded = String(current).padStart(5, '0');
-    document.getElementById('counter-number').innerText = padded;
-  }
-});
-
 
 ScrollTrigger.create({
   trigger: '#counter-section',
@@ -218,6 +205,8 @@ ScrollTrigger.create({
     document.getElementById('msg-line2').style.transform = 'translateY(12px)';
   }
 });
+
+
 
 }
 
