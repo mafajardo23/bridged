@@ -407,5 +407,132 @@ body {
   padding-left: 1rem;
 }
 
+/* ── TIMELINE ── */
+#timeline-section {
+  height: 700vh;
+  position: relative;
+  z-index: 60;
+}
+
+#timeline-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#timeline-year {
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 700;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+#timeline-event {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  letter-spacing: 0.1em;
+  text-align: center;
+  max-width: 600px;
+  transition: color 0.3s;
+}
+
+/* ── CTA ── */
+#cta-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--off-white);
+  position: relative;
+  z-index: 60;
+}
+
+#cta-inner {
+  max-width: 1400px;
+  padding: 4rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#cta-section.visible #cta-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#cta-top {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+#cta-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--purple);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  
+}
+
+#cta-body {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+#cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#btn-vote {
+  padding: 1rem 2.5rem;
+  background: var(--purple);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+#btn-vote:hover {
+  background: #3a0fa0;
+}
+
+#btn-share {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: var(--purple);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--purple);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+#btn-share:hover {
+  background: var(--purple);
+  color: white;
+}
+
 
 

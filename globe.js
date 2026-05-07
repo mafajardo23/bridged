@@ -220,6 +220,78 @@ ScrollTrigger.create({
   });
 });
 
+// Timeline of events
+const events = [
+  { year: '2016', text: 'El acuerdo de paz es firmado.', progress: 0 },
+  { year: '2018', text: 'Primera elección post-conflicto.', progress: 0.17 },
+  { year: '2021', text: 'Paro Nacional. Millones en las calles.', progress: 0.34 },
+  { year: '2022', text: 'Primera presidente de izquierda en la historia.', progress: 0.5 },
+  { year: '2024', text: 'La violencia regresa al Valle del Cauca.', progress: 0.67 },
+  { year: '2025', text: 'Masacres en Catatumbo. El proceso de paz, en crisis.', progress: 0.83 },
+  { year: '2026', text: 'Colombia vuelve a las urnas.', progress: 1 }
+];
+
+//Timeline animation
+ScrollTrigger.create({
+  trigger: '#timeline-section',
+  start: 'top top',
+  end: 'bottom bottom',
+  scrub: 1,
+  onUpdate: function(self) {
+
+    // find which event to show loop
+    let current = events[0];
+    for (let i = 0; i < events.length; i++) {
+      if (self.progress >= events[i].progress) {
+        current = events[i];
+      }
+    }
+
+    document.getElementById('timeline-year').innerText = current.year;
+    document.getElementById('timeline-event').innerText = current.text;
+
+    // background transitions from dark to light
+    const dark = [13, 10, 26];
+    const light = [247, 245, 242];
+    const r = Math.floor(dark[0] + (light[0] - dark[0]) * self.progress);
+    const g = Math.floor(dark[1] + (light[1] - dark[1]) * self.progress);
+    const b = Math.floor(dark[2] + (light[2] - dark[2]) * self.progress);
+
+    document.getElementById('timeline-sticky').style.background = 
+      'rgb(' + r + ',' + g + ',' + b + ')';
+
+    // text color flips from light to dark
+    const textOpacity = self.progress;
+    document.getElementById('timeline-year').style.color = 
+      self.progress < 0.5 ? '#f0ebff' : '#1a1a1a';
+    document.getElementById('timeline-event').style.color = 
+      self.progress < 0.5 ? 'rgba(240,235,255,0.6)' : 'rgba(26,26,26,0.6)';
+  }
+});
+
+// cta fade in
+ScrollTrigger.create({
+  trigger: '#cta-section',
+  start: 'top 70%',
+  onEnter: function() {
+    document.querySelector('#cta-section').classList.add('visible');
+  }
+});
+
+// share button 
+document.getElementById('btn-share').addEventListener('click', function() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'El Precio del Silencio',
+      text: '53.894 votos cambiaron la historia. El tuyo puede ser uno de ellos.',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('¡Enlace copiado!');
+  }
+});
+
 }
 
 
