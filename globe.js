@@ -30,14 +30,14 @@ const path = d3.geoPath().projection(projection);
 
 console.log('ready');
 
-// ── OCEAN ──
+// Ocean
 const ocean = svg.append('circle')
   .attr('cx', width / 2)
   .attr('cy', height / 2)
   .attr('r', Math.min(width, height) * 0.38)
   .attr('fill', '#1a1a4e');
 
-// ── GRID LINES (graticule) ──
+// Graticule (grid lines)
 const graticule = d3.geoGraticule()();
 
 const gridLines = svg.append('path')
@@ -206,7 +206,19 @@ ScrollTrigger.create({
   }
 });
 
-
+//Stories
+['#story-ana', '#story-jorge', '#story-lucia'].forEach(function(id) {
+  ScrollTrigger.create({
+    trigger: id,
+    start: 'top 60%',
+    onEnter: function() {
+      document.querySelector(id).classList.add('visible');
+    },
+    onLeaveBack: function() {
+      document.querySelector(id).classList.remove('visible');
+    }
+  });
+});
 
 }
 

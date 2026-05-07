@@ -348,5 +348,64 @@ body {
   transition-delay: 0.6s;
 }
 
+/* ── STORY SCREENS ── */
+.story-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0a1a;
+  position: relative;
+  z-index: 60;
+}
+
+.story-inner {
+  max-width: 680px;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story-screen.visible .story-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-location {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1.5rem;
+}
+
+.story-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #f0ebff;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.story-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(240,235,255,0.9);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.story-context {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: rgba(240,235,255,0.4);
+  line-height: 1.6;
+  border-left: 2px solid var(--yellow);
+  padding-left: 1rem;
+}
+
 
 
