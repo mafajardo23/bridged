@@ -1,11 +1,19 @@
-//Turning on GSAP and ScrollTrigger, TextPlugin since GSAP is modular.
-gsap.registerPlugin(ScrollTrigger);
-
 
 //I added everything inside window.onload to make sure JS would wait for the whole html and css to be loaded before it runs. 
 window.onload = function() {
+  //Turning on GSAP and ScrollTrigger, TextPlugin since GSAP is modular.
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.normalizeScroll(true); //Added this line so that Github Pages scroll works 
+
+  // about panel toggle
+document.getElementById('about-btn').addEventListener('click', function() {
+  document.getElementById('about-panel').classList.toggle('open');
+});
+
+document.getElementById('about-close').addEventListener('click', function() {
+  document.getElementById('about-panel').classList.remove('open');
+});
+
 
 // set the width and height of the screen
 const width = window.innerWidth;
@@ -180,8 +188,8 @@ ScrollTrigger.create({
 ScrollTrigger.create({
   trigger: '#counter-section',
   start: 'top center',
-  end: '80% center',
-  scrub: 2,
+  end: 'bottom center',
+  scrub: 5,
   onUpdate: function(self) {
     const countProgress = Math.min(self.progress / 0.3, 1);
     const target = 53894;
@@ -234,6 +242,7 @@ ScrollTrigger.create({
   ScrollTrigger.create({
     trigger: id,
     start: 'top 60%',
+    scrub: 2,
     onEnter: function() {
       document.querySelector(id).classList.add('visible');
     },
@@ -285,7 +294,7 @@ ScrollTrigger.create({
     // text color flips from light to dark
     const textOpacity = self.progress;
     document.getElementById('timeline-year').style.color = 
-      self.progress < 0.5 ? '#f0ebff' : '#1a1a1a';
+      self.progress < 0.5 ? '#f0ebff' : '#1a1a4e';
     document.getElementById('timeline-event').style.color = 
       self.progress < 0.5 ? 'rgba(240,235,255,0.6)' : 'rgba(26,26,26,0.6)';
   }
@@ -314,6 +323,159 @@ document.getElementById('btn-share').addEventListener('click', function() {
   }
 });
 
+// Language translation:
+//Source: Claude AI (Anthropic), conversation April–May 2026
+// All text is stored as a constant object. Each constant has two keys: 'es' for Spanish and 'en' for English.  When the user clicks the EN/ES button, the function applyLanguage(lang) runs and takes the language code as an argument, looks up the matching content object, and uses innerText to change every text element on the page at once. Making it easy for a user to go back and fourth or simply change it once. 
+
+const content = {
+  es: {
+    aboutBtn: '¿Qué es esto?',
+    aboutText: 'Esta experiencia fue creada como parte de BridgED — una plataforma digital que usa narrativa para conectar a los jóvenes colombianos con su historia. A través del scrollytelling, este sitio recorre el proceso de paz de Colombia, el plebiscito de 2016, y las voces de quienes no pudieron — o no quisieron — votar. El objetivo no es decirte qué pensar. Es recordarte que tu voto tiene peso.',
+    aboutSources: 'Fuentes: Centro Nacional de Memoria Histórica · Registraduría Nacional · International Crisis Group · Indepaz · BBC News · The Guardian',
+    logoText: 'El precio del silencio',
+    tagline: 'Antes de votar · Recuerda',
+    scrollHint: 'Desliza',
+    counterLabel: 'votos separaron la paz de la guerra',
+    msgLine1: 'Cada voto cuenta.',
+    msgLine2: 'El tuyo también.',
+    noLabel: 'No',
+    siLabel: 'Sí',
+    anaLocation: 'Tumaco, Nariño · 2016',
+    anaName: 'Ana, 34 años.',
+    anaQuote: '"El río estaba crecido ese día. No había lancha, no había cómo llegar al pueblo a votar. Nosotros queríamos votar. Simplemente no pudimos."',
+    anaContext: 'Tumaco fue una de las regiones más afectadas por el conflicto. También una de las que menos pudo votar ese día.',
+    jorgeLocation: 'Bogotá, D.C. · 2016',
+    jorgeName: 'Jorge, 28 años.',
+    jorgeQuote: '"El acuerdo tenía 297 páginas. Nadie me lo explicó. Escuché rumores de lo que decía. Al final preferí no votar a votar sin entender."',
+    jorgeContext: 'Más del 60% de colombianos elegibles no votaron ese día. La desinformación fue una de las razones más citadas.',
+    luciaLocation: 'Medellín, Antioquia · 2016',
+    luciaName: 'Lucía, 19 años.',
+    luciaQuote: '"Pensé que mi voto no iba a cambiar nada. Que ya estaba decidido. Que era solo un trámite. Después vi el resultado y no pude dormir."',
+    luciaContext: '53.894 votos decidieron el resultado. Lucía tenía edad para votar. No lo hizo.',
+    ctaTop: '10 años después.',
+    ctaHeadline: 'El silencio ya tuvo consecuencias. No lo repitas.',
+    ctaBody: 'Lo que pase ahora depende de quién gobierne. Y quién gobierne depende de ti.',
+    btnVote: 'Verifica dónde votar',
+    btnShare: 'Comparte esta historia',
+    events: [
+      { year: '2016', text: 'El acuerdo de paz es firmado.' },
+      { year: '2018', text: 'Primera elección post-conflicto.' },
+      { year: '2021', text: 'Paro Nacional. Millones en las calles.' },
+      { year: '2022', text: 'Primera presidente de izquierda en la historia.' },
+      { year: '2024', text: 'La violencia regresa al Valle del Cauca.' },
+      { year: '2025', text: 'Masacres en Catatumbo. El proceso de paz, en crisis.' },
+      { year: '2026', text: 'Colombia vuelve a las urnas.' }
+    ]
+  },
+  en: {
+    aboutBtn: 'What is this?',
+    aboutText: 'This experience was created as part of BridgED — a digital platform that uses narrative to connect young Colombians with their history. Through scrollytelling, this site walks through Colombia\'s peace process, the 2016 plebiscite, and the voices of those who couldn\'t — or didn\'t — vote. The goal is not to tell you what to think. It is to remind you that your vote carries weight.',
+    aboutSources: 'Sources: Centro Nacional de Memoria Histórica · Registraduría Nacional · International Crisis Group · Indepaz · BBC News · The Guardian',
+    logoText: 'The Price of Silence',
+    tagline: 'Before you vote · Remember',
+    scrollHint: 'Scroll',
+    counterLabel: 'votes separated peace from war',
+    msgLine1: 'Every vote counts.',
+    msgLine2: 'Including yours.',
+    noLabel: 'No',
+    siLabel: 'Yes',
+    anaLocation: 'Tumaco, Nariño · 2016',
+    anaName: 'Ana, 34 years old.',
+    anaQuote: '"The river was flooded that day. There was no boat, no way to get to town to vote. We wanted to vote. We simply couldn\'t."',
+    anaContext: 'Tumaco was one of the regions most affected by the conflict — and one of the areas with the lowest voter turnout that day.',
+    jorgeLocation: 'Bogotá, D.C. · 2016',
+    jorgeName: 'Jorge, 28 years old.',
+    jorgeQuote: '"The agreement was 297 pages long. Nobody explained it to me. I heard rumors about what it said. In the end I preferred not to vote than to vote without understanding."',
+    jorgeContext: 'More than 60% of eligible Colombians did not vote that day. Misinformation was one of the most cited reasons.',
+    luciaLocation: 'Medellín, Antioquia · 2016',
+    luciaName: 'Lucía, 19 years old.',
+    luciaQuote: '"I thought my vote wouldn\'t change anything. That it was already decided. That it was just a formality. Then I saw the result and couldn\'t sleep."',
+    luciaContext: '53,894 votes decided the result. Lucía was old enough to vote. She didn\'t.',
+    ctaTop: '10 years later.',
+    ctaHeadline: 'Silence already had consequences. Don\'t repeat it.',
+    ctaBody: 'What happens now depends on who governs. And who governs depends on you.',
+    btnVote: 'Find your polling station',
+    btnShare: 'Share this story',
+    events: [
+      { year: '2016', text: 'The peace agreement is signed.' },
+      { year: '2018', text: 'First post-conflict election.' },
+      { year: '2021', text: 'National Strike. Millions in the streets.' },
+      { year: '2022', text: 'First left-wing president in history.' },
+      { year: '2024', text: 'Violence returns to Valle del Cauca.' },
+      { year: '2025', text: 'Massacres in Catatumbo. The peace process, in crisis.' },
+      { year: '2026', text: 'Colombia returns to the polls.' }
+    ]
+  }
+};
+
+let currentLang = 'es';
+
+function applyLanguage(lang) {
+  const c = content[lang];
+
+  // intro
+  document.getElementById('about-btn').innerText = c.aboutBtn;
+  document.getElementById('about-text').innerText = c.aboutText;
+  document.getElementById('about-sources').innerText = c.aboutSources;
+  document.querySelector('.logo-text').innerText = c.logoText;
+  document.querySelector('.tagline').innerText = c.tagline;
+  document.querySelector('.scroll-text').innerText = c.scrollHint;
+
+  // counter
+  document.getElementById('counter-label').innerText = c.counterLabel;
+
+  // vote message
+  document.getElementById('msg-line1').innerText = c.msgLine1;
+  document.getElementById('msg-line2').innerText = c.msgLine2;
+
+  // bar labels
+  document.querySelector('#no-bar .vote-label').innerText = c.noLabel;
+  document.querySelector('#si-bar .vote-label').innerText = c.siLabel;
+
+  // story ana
+  document.querySelector('#story-ana .story-location').innerText = c.anaLocation;
+  document.querySelector('#story-ana .story-name').innerText = c.anaName;
+  document.querySelector('#story-ana .story-quote').innerText = c.anaQuote;
+  document.querySelector('#story-ana .story-context').innerText = c.anaContext;
+
+  // story jorge
+  document.querySelector('#story-jorge .story-location').innerText = c.jorgeLocation;
+  document.querySelector('#story-jorge .story-name').innerText = c.jorgeName;
+  document.querySelector('#story-jorge .story-quote').innerText = c.jorgeQuote;
+  document.querySelector('#story-jorge .story-context').innerText = c.jorgeContext;
+
+  // story lucia
+  document.querySelector('#story-lucia .story-location').innerText = c.luciaLocation;
+  document.querySelector('#story-lucia .story-name').innerText = c.luciaName;
+  document.querySelector('#story-lucia .story-quote').innerText = c.luciaQuote;
+  document.querySelector('#story-lucia .story-context').innerText = c.luciaContext;
+
+  // cta
+  document.getElementById('cta-top').innerText = c.ctaTop;
+  document.getElementById('cta-headline').innerText = c.ctaHeadline;
+  document.getElementById('cta-body').innerText = c.ctaBody;
+  document.getElementById('btn-vote').innerText = c.btnVote;
+  document.getElementById('btn-share').innerText = c.btnShare;
+
+  // timeline events
+  events.length = 0;
+  c.events.forEach(function(e, i) {
+    events.push({
+      year: e.year,
+      text: e.text,
+      progress: i / (c.events.length - 1)
+    });
+  });
+
+  // update button label
+  document.getElementById('lang-btn').innerText = lang === 'es' ? 'EN' : 'ES';
+  currentLang = lang;
+}
+
+// toggle on click
+document.getElementById('lang-btn').addEventListener('click', function() {
+  applyLanguage(currentLang === 'es' ? 'en' : 'es');
+});
 }
 
 

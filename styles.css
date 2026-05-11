@@ -36,6 +36,108 @@ body {
   text-align: center;
 }
 
+#lang-btn {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  z-index: 200;
+  transition: background 0.3s, color 0.3s;
+}
+
+#lang-btn:hover {
+  background: var(--purple);
+  color: white;
+}
+
+#about-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  z-index: 200;
+  transition: background 0.3s, color 0.3s;
+}
+
+#about-btn:hover {
+  background: var(--purple);
+  color: white;
+}
+
+#about-panel {
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+  width: 360px;
+  background: white;
+  border: 1px solid rgba(72, 20, 178, 0.2);
+  border-radius: 4px;
+  padding: 2rem;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#about-panel.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+#about-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+#about-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+#about-sources {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--gray);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--yellow);
+  padding-left: 0.8rem;
+}
+
+#about-author {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--purple);
+  font-style: italic;
+  text-align: right;
+}
+
 .logo-text {
   font-family: var(--font-heading);
   font-size: 6rem;
