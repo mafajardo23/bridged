@@ -1,8 +1,8 @@
+//Turning on GSAP and ScrollTrigger, TextPlugin since GSAP is modular.
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
-// grab the svg element from the HTML
-//const svg = d3.select('#globe-svg');
 
+//I added everything inside window.onload to make sure JS would wait for the whole html and css to be loaded before it runs. 
 window.onload = function() {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.normalizeScroll(true); //Added this line so that Github Pages scroll works 
@@ -47,7 +47,6 @@ const gridLines = svg.append('path')
   .attr('stroke', 'rgba(255,255,255,0.08)')
   .attr('stroke-width', 0.5);
 
-// 
 const countriesGroup = svg.append('g');
 
 // goes virtually and gets the file and awaits for result
@@ -59,7 +58,7 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
     console.log('map data loaded');
 
     // convert the  data into usable  features
-    //topojson is how is the format it comes in, converts it into GeoJSON so that D3 can read it and render
+    //topojson is the format it comes in, converts it into GeoJSON so that D3 can read it and render
     const countries = topojson.feature(world, world.objects.countries);
 
     // draws each country as a path
@@ -72,6 +71,32 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
       .attr('stroke-width', 0.3);
 
   });
+
+  /*  ── HOW GSAP's SCROLLTRIGGER WORKS ──
+
+  Every animation I used follows the same pattern.
+  ScrollTrigger watches a specific HTML element (trigger).
+  When the user scrolls to it, the animation begins.
+
+  start: when the trigger begins. 'top top' means when the 
+  top of the element hits the top of the viewport.
+
+  end: when the trigger ends. 'bottom bottom' means when the 
+  bottom of the element hits the bottom of the viewport.
+
+  scrub: its how much the animation will "lag" before catching up. 
+  scrub: 1 adds a small lag so it feels smooth, not instant.
+
+  onUpdate: runs every time the user scrolls inside the trigger zone.
+  self.progress is a number from 0 to 1.
+
+  All animations are just math using self.progress to change values over time.
+
+  Example: 
+  - opacity = self.progress fades something in as you scroll.
+  - y = 300 - (self.progress * 300) moves something upward.
+  - current = Math.floor(self.progress * 53894) counts up a number.
+*/
 
   //Make it rotate towards Colombia
   ScrollTrigger.create({
@@ -152,8 +177,6 @@ ScrollTrigger.create({
 });
 
 //Vote counter for peace
-
-
 ScrollTrigger.create({
   trigger: '#counter-section',
   start: 'top center',
@@ -220,7 +243,7 @@ ScrollTrigger.create({
   });
 });
 
-// Timeline of events
+// Timeline of events. The progress value determines which event shows at what point of the scroll. 
 const events = [
   { year: '2016', text: 'El acuerdo de paz es firmado.', progress: 0 },
   { year: '2018', text: 'Primera elección post-conflicto.', progress: 0.17 },
@@ -238,7 +261,6 @@ ScrollTrigger.create({
   end: 'bottom bottom',
   scrub: 1,
   onUpdate: function(self) {
-
     // find which event to show loop
     let current = events[0];
     for (let i = 0; i < events.length; i++) {

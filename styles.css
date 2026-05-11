@@ -239,22 +239,6 @@ body {
   width: 100%;
 }
 
-.digit {
-  font-family: 'Courier New', monospace;
-  font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 700;
-  color: #ffffff;
-  background: #0d0a1a;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 4px;
-  width: 1.1em;
-  height: 1.4em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-
 #vote-breakdown {
   height: 300vh;
   background: #0d0a1a;
@@ -307,7 +291,7 @@ body {
   justify-content: center;
   padding-bottom: 1.2rem;
   border-radius: 4px 4px 0 0;
-  transition: height 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: height 1s ease;
   overflow: hidden;
 }
 
